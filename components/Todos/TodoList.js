@@ -4,11 +4,13 @@ const TodoList = ({ data, onDelete }) => {
       {data.map((todo) => {
         return (
           <div
-            className='flex w-full items-center justify-between rounded-lg border border-slate-300 p-6 shadow-sm hover:border-slate-400 hover:shadow-lg'
+            className='flex w-full items-center justify-between rounded-lg border border-slate-300 p-3 shadow-sm hover:border-slate-400 hover:shadow-lg md:p-6'
             key={todo.id}
           >
-            <p className='text-lg font-medium text-slate-800'>{todo.title}</p>
-            <div className='flex items-center gap-x-4'>
+            <p className='text-sm font-medium text-slate-800 md:text-lg'>
+              {todo.title}
+            </p>
+            <div className='flex items-center gap-x-2 md:gap-x-4'>
               {/* Check */}
               <button>
                 <svg
@@ -17,7 +19,7 @@ const TodoList = ({ data, onDelete }) => {
                   viewBox='0 0 24 24'
                   strokeWidth={1.5}
                   stroke='currentColor'
-                  className='h-6 w-6 stroke-lime-600 hover:stroke-lime-800 '
+                  className='h-5 w-5 stroke-lime-600 hover:stroke-lime-800 md:h-6 md:w-6 '
                 >
                   <path
                     strokeLinecap='round'
@@ -34,7 +36,7 @@ const TodoList = ({ data, onDelete }) => {
                   viewBox='0 0 24 24'
                   strokeWidth={1.5}
                   stroke='currentColor'
-                  className='h-6 w-6 stroke-red-500 hover:stroke-red-700'
+                  className='h-5 w-5 stroke-red-500 hover:stroke-red-700 md:h-6 md:w-6'
                 >
                   <path
                     strokeLinecap='round'
@@ -51,7 +53,7 @@ const TodoList = ({ data, onDelete }) => {
                   viewBox='0 0 24 24'
                   strokeWidth={1.5}
                   stroke='currentColor'
-                  className='h-6 w-6 stroke-blue-500 hover:stroke-blue-700'
+                  className='h-5 w-5 stroke-blue-500 hover:stroke-blue-700 md:h-6 md:w-6'
                 >
                   <path
                     strokeLinecap='round'

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import TodoList from '../components/Todos/TodoList';
+import TodoForm from '../components/AddNewTodo';
 // import useSWR, { mutate } from 'swr';
 
 // const fetcher = async () => {
@@ -22,8 +23,17 @@ export default function Home() {
       .catch((error) => console.log(error));
   }, []);
 
-  const deleteTodo = async (id) => {
-    await axios.delete(`/api/todos/${id}`).then(({ data }) => {
+  const deleteTodo = (id) => {
+    axios.delete(`/api/todos/${id}`).then(({ data }) => {
+      console.log(data);
+      setData(data.todos);
+      setLoading(false);
+    });
+  };
+
+  const addTodo = (e, todo) => {
+    e.preventDefault();
+    axios.post(`/api/todos`, { todo }).then(({ data }) => {
       console.log(data);
       setData(data.todos);
       setLoading(false);
@@ -33,10 +43,10 @@ export default function Home() {
   if (loading)
     return (
       <div className='flex h-screen w-full flex-col items-center bg-gray-100 px-8 py-4'>
-        <h1 className='mb-10 w-2/3 rounded-xl bg-white px-8 py-6 text-center text-3xl font-bold shadow-lg'>
+        <h1 className='mb-10 w-full rounded-xl bg-white px-8 py-6 text-center text-lg font-bold shadow-lg lg:w-2/3 lg:text-3xl'>
           TodoList App using Next.js & TailwindCSS
         </h1>
-        <div className='w-1/2 rounded-xl bg-white p-8 shadow-md'>
+        <div className='w-full rounded-xl bg-white p-8 shadow-md lg:w-1/2'>
           <div className='flex w-full flex-col items-center justify-center gap-y-6 rounded-lg text-2xl font-medium text-slate-800'>
             Loading ... Please Wait.
           </div>
@@ -46,10 +56,15 @@ export default function Home() {
 
   return (
     <div className='flex h-screen w-full flex-col items-center overflow-y-hidden bg-gray-100 px-8 py-4'>
-      <h1 className='mb-10 w-2/3 rounded-xl bg-white px-8 py-6 text-center text-3xl font-bold shadow-lg'>
+      <h1 className='mb-10 w-full rounded-xl bg-white px-8 py-6 text-center text-lg font-bold shadow-lg lg:w-2/3 lg:text-3xl'>
         TodoList App using Next.js & TailwindCSS
       </h1>
-      <div className='w-1/2 overflow-y-auto rounded-xl bg-white p-8 shadow-md'>
+      {/* Todo Form */}
+      <div className='mb-4 w-full  rounded-xl bg-white px-8 py-2 shadow-md lg:w-1/2'>
+        <TodoForm onAdd={addTodo} />
+      </div>
+      {/* TodoList */}
+      <div className='w-full overflow-y-auto rounded-xl bg-white p-8 shadow-md lg:w-1/2'>
         <TodoList data={data} onDelete={deleteTodo} />
       </div>
     </div>
