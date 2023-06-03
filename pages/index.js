@@ -55,17 +55,19 @@ export default function Home() {
     );
 
   return (
-    <div className='flex h-screen w-full flex-col items-center overflow-y-hidden bg-gray-100 px-8 py-4'>
+    <div className='flex h-screen max-h-screen w-full flex-col items-center overflow-y-hidden bg-gray-100 px-8 py-4'>
       <h1 className='mb-10 w-full rounded-xl bg-white px-8 py-6 text-center text-lg font-bold shadow-lg lg:w-2/3 lg:text-3xl'>
         TodoList App using Next.js & TailwindCSS
       </h1>
-      {/* Todo Form */}
-      <div className='mb-4 w-full  rounded-xl bg-white px-8 py-2 shadow-md lg:w-1/2'>
-        <TodoForm onAdd={addTodo} />
-      </div>
-      {/* TodoList */}
-      <div className='w-full overflow-y-auto rounded-xl bg-white p-8 shadow-md lg:w-1/2'>
-        <TodoList data={data} onDelete={deleteTodo} />
+      <div className='flex w-full flex-col  lg:flex-row lg:justify-center lg:gap-x-10'>
+        {/* Todo Form */}
+        <div className='h-[450px] w-full rounded-xl bg-white px-8 py-2 shadow-md lg:w-1/3'>
+          <TodoForm onAdd={addTodo} />
+        </div>
+        {/* TodoList */}
+        <div className='h-[630px] w-full overflow-y-scroll rounded-xl bg-white p-8 shadow-md lg:w-1/2'>
+          <TodoList data={data} onDelete={deleteTodo} />
+        </div>
       </div>
     </div>
   );
