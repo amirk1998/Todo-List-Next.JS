@@ -12,6 +12,7 @@ import TodoForm from '../components/AddNewTodo';
 export default function Home() {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
+  const [isShow, setIsShow] = useState(false);
 
   useEffect(() => {
     axios
@@ -31,19 +32,22 @@ export default function Home() {
     });
   };
 
-  const addTodo = (e, todo) => {
+  const addTodo = (e, formData) => {
     e.preventDefault();
-    axios.post(`/api/todos`, { todo }).then(({ data }) => {
-      console.log(data);
-      setData(data.todos);
-      setLoading(false);
-    });
+
+    console.log(formData);
+
+    // axios.post(`/api/todos`, { todo }).then(({ data }) => {
+    //   console.log(data);
+    //   setData(data.todos);
+    //   setLoading(false);
+    // });
   };
 
   if (loading)
     return (
       <div className='flex h-screen w-full flex-col items-center bg-gray-100 px-8 py-4'>
-        <h1 className='mb-10 w-full rounded-xl bg-white px-8 py-6 text-center text-lg font-bold shadow-lg lg:w-2/3 lg:text-3xl'>
+        <h1 className='w-full rounded-xl bg-white px-8 py-6 text-center text-lg font-bold shadow-lg lg:w-2/3 lg:text-3xl'>
           TodoList App using Next.js & TailwindCSS
         </h1>
         <div className='w-full rounded-xl bg-white p-8 shadow-md lg:w-1/2'>
@@ -59,10 +63,15 @@ export default function Home() {
       <h1 className='w-full rounded-xl bg-white px-8 py-6 text-center text-lg font-bold shadow-lg lg:w-2/3 lg:text-3xl'>
         TodoList App using Next.js & TailwindCSS
       </h1>
-      <div className='flex h-full w-full flex-col gap-y-6 py-10 lg:flex-row lg:justify-center lg:gap-x-10'>
+      <div className='flex h-full w-full flex-col gap-y-6 py-10 lg:h-screen lg:max-h-screen lg:flex-row lg:justify-center lg:gap-x-10'>
         {/* Todo Form */}
-        <div className='h-[450px] w-full rounded-xl bg-white px-8 py-2 shadow-md lg:w-1/3'>
-          <TodoForm onAdd={addTodo} />
+
+        <div
+          className={`h-auto w-full rounded-xl px-8 py-2 shadow-md lg:w-1/3 lg:shadow-none ${
+            isShow && ' bg-white lg:h-[450px]'
+          } `}
+        >
+          <TodoForm onAdd={addTodo} isShow={isShow} setIsShow={setIsShow} />
         </div>
         {/* TodoList */}
         <div className='w-full rounded-xl bg-white p-8 shadow-md lg:h-[630px] lg:w-1/2 lg:overflow-y-scroll'>
