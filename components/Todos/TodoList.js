@@ -5,7 +5,7 @@ const TodoList = ({ data, onDelete }) => {
         return (
           <div
             className='flex w-full items-center justify-between rounded-lg border border-slate-300 p-3 shadow-sm hover:border-slate-400 hover:shadow-lg md:p-6'
-            key={todo.id}
+            key={todo._id}
           >
             <p className='text-sm font-medium text-slate-800 md:text-lg'>
               {todo.title}

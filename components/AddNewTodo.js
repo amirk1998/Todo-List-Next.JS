@@ -2,13 +2,15 @@ import { enqueueSnackbar } from 'notistack';
 import { useState } from 'react';
 
 const TodoForm = ({ onAdd, isShow, setIsShow }) => {
-  const [formData, setFormData] = useState({ title: '', description: '' });
+  const [formData, setFormData] = useState({
+    title: '',
+    description: '',
+    isCompleted: false,
+  });
 
   const changeHandler = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
-  console.log(formData);
 
   if (!isShow) {
     return (

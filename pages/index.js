@@ -37,11 +37,11 @@ export default function Home() {
 
     console.log(formData);
 
-    // axios.post(`/api/todos`, { todo }).then(({ data }) => {
-    //   console.log(data);
-    //   setData(data.todos);
-    //   setLoading(false);
-    // });
+    axios.post(`/api/todos`, { formData }).then(({ data }) => {
+      console.log(data);
+      setData(data.todos);
+      setLoading(false);
+    });
   };
 
   if (loading)
