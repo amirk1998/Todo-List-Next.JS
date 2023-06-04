@@ -36,16 +36,16 @@ const TodoForm = ({ onAdd }) => {
         className='block w-full resize-none rounded-lg border-2 border-slate-300 bg-gray-50 p-3 font-medium text-slate-800 outline-none focus:border-blue-500 lg:text-lg'
         placeholder='Description'
       ></textarea>
-      <div className='mt-4 flex w-full items-center justify-between'>
+      <div className='mt-4 flex w-full items-center justify-center gap-x-4'>
         <button
           type='button'
-          className='mt-3 w-full rounded-lg border-2 border-blue-500 px-4 py-2.5 text-center text-base font-medium text-blue-500 outline-none hover:border-blue-700 hover:text-blue-700 focus:ring-4 sm:w-auto lg:px-10'
+          className='mt-3 w-full rounded-lg border-2 border-blue-500 px-2 py-2.5 text-center text-sm font-medium text-blue-500 outline-none hover:border-blue-700 hover:text-blue-700 focus:ring-4 sm:w-auto md:px-4 md:text-base lg:px-10'
         >
           Cancel
         </button>
         <button
           type='submit'
-          className='mt-3 w-full rounded-lg border-2 border-blue-500 bg-blue-500 px-4 py-2.5 text-center text-base font-medium text-white hover:border-blue-700 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 sm:w-auto lg:px-10'
+          className='mt-3 w-full rounded-lg border-2 border-blue-500 bg-blue-500 px-2 text-center text-sm font-medium text-white hover:border-blue-700 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 sm:w-auto md:px-4 md:py-2.5 md:text-base lg:px-10'
         >
           Add New Todo
         </button>
