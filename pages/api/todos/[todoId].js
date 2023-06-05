@@ -12,5 +12,13 @@ export default async function handler(req, res) {
     return res
       .status(200)
       .json({ message: 'Todo successfully deleted', todos });
+  } else if (method === 'GET') {
+    const todo = await getOneTodo(query);
+    return res.status(200).json({ message: 'Todo loaded ', todo });
   }
+}
+
+export async function getOneTodo(query) {
+  const todo = await Todo.findById(query.todoId);
+  return todo;
 }

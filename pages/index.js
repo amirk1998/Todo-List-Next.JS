@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import TodoList from '../components/Todos/TodoList';
-import TodoForm from '../components/AddNewTodo';
+import TodoForm from '../components/Todos/AddNewTodo';
 // import useSWR, { mutate } from 'swr';
 
 // const fetcher = async () => {

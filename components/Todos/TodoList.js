@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 const TodoList = ({ data, onDelete }) => {
   if (!data.length) {
     return (
@@ -17,9 +19,13 @@ const TodoList = ({ data, onDelete }) => {
             className='flex w-full items-center justify-between rounded-lg border border-slate-300 p-3 shadow-sm hover:border-slate-400 hover:shadow-lg md:p-6'
             key={todo._id}
           >
-            <p className='text-sm font-medium text-slate-800 md:text-lg'>
-              {todo.title}
-            </p>
+            <Link href={`/todos/${todo._id}`}>
+              <a>
+                <p className='text-sm font-medium text-slate-800 md:text-lg'>
+                  {todo.title}
+                </p>
+              </a>
+            </Link>
             <div className='flex items-center gap-x-2 md:gap-x-4'>
               {/* Check */}
               <button>
