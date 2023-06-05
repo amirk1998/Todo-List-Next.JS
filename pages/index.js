@@ -50,7 +50,7 @@ export default function Home() {
         <h1 className='w-full rounded-xl bg-white px-8 py-6 text-center text-lg font-bold shadow-lg lg:w-2/3 lg:text-3xl'>
           TodoList App using Next.js & TailwindCSS
         </h1>
-        <div className='w-full rounded-xl bg-white p-8 shadow-md lg:w-1/2'>
+        <div className='mt-4 w-full rounded-xl bg-white p-8 shadow-md lg:w-1/2'>
           <div className='flex w-full flex-col items-center justify-center gap-y-6 rounded-lg text-2xl font-medium text-slate-800'>
             Loading ... Please Wait.
           </div>
@@ -67,7 +67,7 @@ export default function Home() {
         {/* Todo Form */}
 
         <div
-          className={`h-auto w-full rounded-xl px-8 py-2 shadow-md lg:w-1/3 lg:shadow-none ${
+          className={`h-auto w-full rounded-xl bg-white px-8 py-2 shadow-md lg:w-1/3 lg:bg-transparent lg:shadow-none ${
             isShow && ' bg-white lg:h-[450px]'
           } `}
         >

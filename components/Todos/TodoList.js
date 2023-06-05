@@ -1,4 +1,14 @@
 const TodoList = ({ data, onDelete }) => {
+  if (!data.length) {
+    return (
+      <div className='flex w-full flex-col items-center justify-center gap-y-6 rounded-lg'>
+        <h1 className='w-full rounded-xl text-center text-lg font-semibold lg:text-2xl'>
+          Please Add some Todos !
+        </h1>
+      </div>
+    );
+  }
+
   return (
     <div className='flex w-full flex-col items-center justify-center gap-y-6 rounded-lg'>
       {data.map((todo) => {
