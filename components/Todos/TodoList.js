@@ -39,7 +39,7 @@ const TodoList = ({ data, onDelete }) => {
                 </svg>
               </button>
               {/* Trash */}
-              <button onClick={() => onDelete(todo.id)}>
+              <button onClick={() => onDelete(todo._id)}>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   fill='none'
