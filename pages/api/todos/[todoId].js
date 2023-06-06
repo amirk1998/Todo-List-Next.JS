@@ -8,7 +8,7 @@ export default async function handler(req, res) {
 
   if (method === 'DELETE') {
     await Todo.findByIdAndDelete(query.todoId);
-    const todos = await Todo.find({});
+    const todos = await Todo.find({}).maxTimeMS(30000);
     return res
       .status(200)
       .json({ message: 'Todo successfully deleted', todos });

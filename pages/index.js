@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import TodoList from '../components/Todos/TodoList';
 import TodoForm from '../components/Todos/AddNewTodo';
 import Todo from '../server/models/todo';
@@ -20,20 +20,6 @@ export default function Home({ todos }) {
       setData(data.todos);
     });
   };
-
-  // if (loading)
-  //   return (
-  //     <div className='flex h-screen w-full flex-col items-center bg-gray-100 px-8 py-4'>
-  //       <h1 className='w-full rounded-xl bg-white px-8 py-6 text-center text-lg font-bold shadow-lg lg:w-2/3 lg:text-3xl'>
-  //         TodoList App using Next.js & TailwindCSS
-  //       </h1>
-  //       <div className='mt-4 w-full rounded-xl bg-white p-8 shadow-md lg:w-1/2'>
-  //         <div className='flex w-full flex-col items-center justify-center gap-y-6 rounded-lg text-2xl font-medium text-slate-800'>
-  //           Loading ... Please Wait.
-  //         </div>
-  //       </div>
-  //     </div>
-  //   );
 
   return (
     <div className='flex h-full w-full flex-col items-center bg-gray-100 px-8 py-4 lg:h-screen lg:max-h-screen lg:overflow-y-hidden'>
@@ -60,7 +46,7 @@ export default function Home({ todos }) {
 }
 
 export async function getServerSideProps(context) {
-  const todos = await Todo.find({});
+  const todos = await Todo.find({}).maxTimeMS(30000);
 
   return {
     props: {
