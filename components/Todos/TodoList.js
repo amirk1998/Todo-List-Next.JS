@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 const TodoList = ({ data, onDelete }) => {
-  if (!data.length) {
+  if (!data) {
     return (
       <div className='flex w-full flex-col items-center justify-center gap-y-6 rounded-lg'>
         <h1 className='w-full rounded-xl text-center text-lg font-semibold lg:text-2xl'>

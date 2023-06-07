@@ -1,12 +1,21 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import TodoList from '../components/Todos/TodoList';
 import TodoForm from '../components/Todos/AddNewTodo';
 import Todo from '../server/models/todo';
 
-export default function Home({ todos }) {
-  const [data, setData] = useState(todos);
+export default function Home() {
+  const [data, setData] = useState(null);
   const [isShow, setIsShow] = useState(false);
+
+  useEffect(() => {
+    axios
+      .get('/api/todos')
+      .then(({ data }) => {
+        setData(data.todos);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   const deleteTodo = (id) => {
     axios.delete(`/api/todos/${id}`).then(({ data }) => {
@@ -45,12 +54,12 @@ export default function Home({ todos }) {
   );
 }
 
-export async function getServerSideProps(context) {
-  const todos = await Todo.find({}).maxTimeMS(30000);
+// export async function getServerSideProps(context) {
+//   const todos = await Todo.find({}).maxTimeMS(30000);
 
-  return {
-    props: {
-      todos: JSON.parse(JSON.stringify(todos)),
-    },
-  };
-}
+//   return {
+//     props: {
+//       todos: JSON.parse(JSON.stringify(todos)),
+//     },
+//   };
+// }
