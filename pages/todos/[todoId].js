@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { getOneTodo } from '../api/todos/[todoId]';
 
 const TodoPage = ({ todo }) => {
@@ -18,6 +19,14 @@ const TodoPage = ({ todo }) => {
             Description: {todo.description}
           </p>
         </div>
+        <Link href='/'>
+          <button
+            type='button'
+            className='mt-3 w-full rounded-lg border-2 border-blue-500 px-2 py-2.5 text-center text-sm font-medium text-blue-500 outline-none hover:border-blue-700 hover:text-blue-700 focus:ring-4 sm:w-auto md:px-4 md:text-base lg:px-10'
+          >
+            Back To Home
+          </button>
+        </Link>
       </div>
     </div>
   );

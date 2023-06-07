@@ -1,5 +1,3 @@
-// import { todos } from '../../../data/todos';
-
 import dbConnect from '../../../server/utils/dbConnect';
 import Todo from '../../../server/models/todo';
 
@@ -9,8 +7,6 @@ export default async function handler(req, res) {
   const { method, body } = req;
 
   if (method === 'POST') {
-    // console.log(body.todo);
-
     const { formData } = body;
 
     await Todo.create({
