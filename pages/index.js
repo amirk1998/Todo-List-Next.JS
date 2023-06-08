@@ -4,6 +4,7 @@ import TodoList from '../components/Todos/TodoList';
 import TodoForm from '../components/Todos/AddNewTodo';
 import dbConnect from '../server/utils/dbConnect';
 import Todo from '../server/models/todo';
+import Layout from '../containers/Layout';
 
 export default function Home({ todos }) {
   const [data, setData] = useState(todos);
@@ -31,10 +32,7 @@ export default function Home({ todos }) {
   };
 
   return (
-    <div className='flex h-full w-full flex-col items-center bg-gray-100 px-8 py-4 lg:h-screen lg:max-h-screen lg:overflow-y-hidden'>
-      <h1 className='w-full rounded-xl bg-white px-8 py-6 text-center text-lg font-bold shadow-lg lg:w-2/3 lg:text-3xl'>
-        TodoList App using Next.js & TailwindCSS
-      </h1>
+    <Layout>
       <div className='flex h-full w-full flex-col gap-y-6 py-10 lg:h-screen lg:max-h-screen lg:flex-row lg:justify-center lg:gap-x-10'>
         {/* Todo Form */}
 
@@ -54,7 +52,7 @@ export default function Home({ todos }) {
           />
         </div>
       </div>
-    </div>
+    </Layout>
   );
 }
 

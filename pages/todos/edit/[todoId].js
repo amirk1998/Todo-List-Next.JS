@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import { getOneTodo } from '../../api/todos/[todoId]';
 import { useState } from 'react';
 import axios from 'axios';
+import Layout from '../../../containers/Layout';
 
 const TodoEdit = ({ todo }) => {
   const router = useRouter();
@@ -27,10 +28,7 @@ const TodoEdit = ({ todo }) => {
   };
 
   return (
-    <div className='flex h-full w-full flex-col items-center bg-gray-100 px-8 py-4 lg:h-screen lg:max-h-screen lg:overflow-y-hidden'>
-      <h1 className='w-full rounded-xl bg-white px-8 py-6 text-center text-lg font-bold shadow-lg lg:w-2/3 lg:text-3xl'>
-        TodoList App using Next.js & TailwindCSS
-      </h1>
+    <Layout>
       <form
         className='mt-6 flex w-full max-w-screen-md flex-col rounded-xl bg-white px-6 py-4'
         onSubmit={submitHandler}
@@ -98,7 +96,7 @@ const TodoEdit = ({ todo }) => {
           </button>
         </div>
       </form>
-    </div>
+    </Layout>
   );
 };
 

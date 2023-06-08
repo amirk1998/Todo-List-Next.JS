@@ -1,12 +1,10 @@
 import Link from 'next/link';
 import { getOneTodo } from '../api/todos/[todoId]';
+import Layout from '../../containers/Layout';
 
 const TodoPage = ({ todo }) => {
   return (
-    <div className='flex h-full w-full flex-col items-center bg-gray-100 px-8 py-4 lg:h-screen lg:max-h-screen lg:overflow-y-hidden'>
-      <h1 className='w-full rounded-xl bg-white px-8 py-6 text-center text-lg font-bold shadow-lg lg:w-2/3 lg:text-3xl'>
-        TodoList App using Next.js & TailwindCSS
-      </h1>
+    <Layout>
       <div className='mt-6 flex w-1/2 flex-col items-center justify-center gap-y-6 rounded-xl bg-white px-8 py-4 shadow-md'>
         <h2 className=' w-full text-center text-lg font-semibold lg:text-2xl'>
           Todo Details Page
@@ -28,7 +26,7 @@ const TodoPage = ({ todo }) => {
           </button>
         </Link>
       </div>
-    </div>
+    </Layout>
   );
 };
 
