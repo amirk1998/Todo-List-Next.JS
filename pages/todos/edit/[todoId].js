@@ -5,6 +5,7 @@ import axios from 'axios';
 
 const TodoEdit = ({ todo }) => {
   const router = useRouter();
+  const [checked, setChecked] = useState(todo.isCompleted);
   const [formData, setFormData] = useState({
     title: todo.title,
     description: todo.description,
@@ -18,7 +19,9 @@ const TodoEdit = ({ todo }) => {
   const submitHandler = (e) => {
     e.preventDefault();
     axios
-      .put(`/api/todos/${router.query.todoId}`, { todo: formData })
+      .put(`/api/todos/${router.query.todoId}`, {
+        todo: { ...formData, isCompleted: checked },
+      })
       .then((res) => router.push('/'))
       .catch((error) => console.log(error));
   };
@@ -63,6 +66,22 @@ const TodoEdit = ({ todo }) => {
           className='block w-full resize-none rounded-lg border-2 border-slate-300 bg-gray-50 p-3 font-medium text-slate-800 outline-none focus:border-blue-500 lg:text-lg'
           placeholder='Description'
         ></textarea>
+        <div className='mt-4 flex items-center'>
+          <input
+            id='checked'
+            type='checkbox'
+            name='checked'
+            checked={checked}
+            onChange={() => setChecked(!checked)}
+            className='h-4 w-4 rounded-lg border-2 border-slate-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500'
+          />
+          <label
+            htmlFor='checked'
+            className='ml-2 text-base font-medium text-slate-800 lg:text-lg'
+          >
+            Complete Todo
+          </label>
+        </div>
         <div className='mt-4 flex w-full items-center justify-center gap-x-4'>
           <button
             type='button'
