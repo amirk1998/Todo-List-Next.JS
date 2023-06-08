@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router';
-import { getOneTodo } from '../../api/todos/[todoId]';
+import { getOneTodo } from '@/api/todos/[todoId]';
 import { useState } from 'react';
 import axios from 'axios';
-import Layout from '../../../containers/Layout';
+import Layout from '@/containers/Layout';
 
 const TodoEdit = ({ todo }) => {
   const router = useRouter();

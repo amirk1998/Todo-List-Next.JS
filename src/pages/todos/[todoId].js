@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { getOneTodo } from '../api/todos/[todoId]';
-import Layout from '../../containers/Layout';
+import { getOneTodo } from '@/api/todos/[todoId]';
+import Layout from '@/containers/Layout';
 
 const TodoPage = ({ todo }) => {
   return (

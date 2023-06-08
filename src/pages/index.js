@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { useState } from 'react';
-import TodoList from '../components/Todos/TodoList';
-import TodoForm from '../components/Todos/AddNewTodo';
-import dbConnect from '../server/utils/dbConnect';
-import Todo from '../server/models/todo';
-import Layout from '../containers/Layout';
+import TodoList from '@/components/Todos/TodoList';
+import TodoForm from '@/components/Todos/AddNewTodo';
+import dbConnect from '@/server/utils/dbConnect';
+import Todo from '@/server/models/todo';
+import Layout from '@/containers/Layout';
 
 export default function Home({ todos }) {
   const [data, setData] = useState(todos);
@@ -19,14 +19,12 @@ export default function Home({ todos }) {
   const addTodo = (e, formData) => {
     e.preventDefault();
     axios.post(`/api/todos`, { formData }).then(({ data }) => {
-      console.log(data);
       setData(data.todos);
     });
   };
 
   const completedHandler = (id) => {
     axios.put(`/api/todos/complete/${id}`).then(({ data }) => {
-      console.log(data);
       setData(data.todos);
     });
   };
