@@ -11,17 +11,20 @@ export default function Home({ todos }) {
 
   const deleteTodo = (id) => {
     axios.delete(`/api/todos/${id}`).then(({ data }) => {
-      console.log(data);
       setData(data.todos);
     });
   };
 
   const addTodo = (e, formData) => {
     e.preventDefault();
-
-    console.log(formData);
-
     axios.post(`/api/todos`, { formData }).then(({ data }) => {
+      console.log(data);
+      setData(data.todos);
+    });
+  };
+
+  const completedHandler = (id) => {
+    axios.put(`/api/todos/complete/${id}`).then(({ data }) => {
       console.log(data);
       setData(data.todos);
     });
@@ -44,7 +47,11 @@ export default function Home({ todos }) {
         </div>
         {/* TodoList */}
         <div className='w-full rounded-xl bg-white p-8 shadow-md lg:h-[630px] lg:w-1/2 lg:overflow-y-scroll'>
-          <TodoList data={data} onDelete={deleteTodo} />
+          <TodoList
+            data={data}
+            onDelete={deleteTodo}
+            onComplete={completedHandler}
+          />
         </div>
       </div>
     </div>

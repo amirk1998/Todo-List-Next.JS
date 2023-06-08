@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-const TodoList = ({ data, onDelete }) => {
+const TodoList = ({ data, onDelete, onComplete }) => {
   if (!data.length) {
     return (
       <div className='flex w-full flex-col items-center justify-center gap-y-6 rounded-lg'>
@@ -21,28 +21,38 @@ const TodoList = ({ data, onDelete }) => {
           >
             <Link href={`/todos/${todo._id}`}>
               <a>
-                <p className='text-sm font-medium text-slate-800 md:text-lg'>
+                <p
+                  className={`text-sm font-medium text-slate-800 md:text-lg ${
+                    todo.isCompleted
+                      ? 'font-normal text-slate-600 line-through'
+                      : ''
+                  }`}
+                >
                   {todo.title}
                 </p>
               </a>
             </Link>
             <div className='flex items-center gap-x-2 md:gap-x-4'>
               {/* Check */}
-              <button>
-                <svg
-                  xmlns='http://www.w3.org/2000/svg'
-                  fill='none'
-                  viewBox='0 0 24 24'
-                  strokeWidth={1.5}
-                  stroke='currentColor'
-                  className='h-5 w-5 stroke-lime-600 hover:stroke-lime-800 md:h-6 md:w-6 '
-                >
-                  <path
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    d='M4.5 12.75l6 6 9-13.5'
-                  />
-                </svg>
+              <button onClick={() => onComplete(todo._id)}>
+                {todo.isCompleted ? (
+                  <svg
+                    xmlns='http://www.w3.org/2000/svg'
+                    fill='none'
+                    viewBox='0 0 24 24'
+                    strokeWidth={1.5}
+                    stroke='currentColor'
+                    className='h-5 w-5 stroke-lime-600 hover:stroke-lime-800 md:h-6 md:w-6 '
+                  >
+                    <path
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                      d='M4.5 12.75l6 6 9-13.5'
+                    />
+                  </svg>
+                ) : (
+                  <span className='block h-5 w-5 rounded-full border-2 border-slate-500 hover:border-slate-700'></span>
+                )}
               </button>
               {/* Trash */}
               <button onClick={() => onDelete(todo._id)}>
